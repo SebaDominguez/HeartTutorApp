@@ -4,24 +4,90 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      List
+      Emociones
     </ion-title>
   </ion-toolbar>
+ 
 </ion-header>
 
+<ion-text color="dark" class="texto">
+  <h1>Ingrese a continuación cómo se sintió el día de hoy: </h1>
+</ion-text>
+
+
+
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-icon [name]="item.icon" slot="start"></ion-icon>
-      {{item.title}}
-      <div class="item-note" slot="end">
-        {{item.note}}
-      </div>
-    </ion-item>
-  </ion-list>
-  <!--
-    <div *ngIf="selectedItem" padding>
-      You navigated here from <b>{{selectedItem.title }}</b>
-    </div>
-  -->
+
+  <ion-slides pager="true">
+
+    <ion-slide class="feliz">
+
+      <ion-card class="happy-card" button="true" color ="light">
+        <img src="/assets/smiley.png"  alt="" />
+        <ion-card-header>
+          <ion-card-subtitle>Get Started</ion-card-subtitle>
+          <ion-card-title>Feliz</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
+        </ion-card-content>
+    </ion-card>
+    </ion-slide>
+
+    <ion-slide class="triste">
+      <ion-card class="sad-card" button="true" color="light">
+        <img src="/assets/sad.png" alt="" />
+        <ion-card-header>
+          <ion-card-subtitle>Get Started</ion-card-subtitle>
+          <ion-card-title>Triste</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
+        </ion-card-content>
+    </ion-card>
+    </ion-slide>
+
+    <ion-slide class="enojado">
+      <ion-card class="angry-card" button="true" color="light">
+        <img src="/assets/angry.png" alt="" />
+        <ion-card-header>
+          <ion-card-subtitle>Get Started</ion-card-subtitle>
+          <ion-card-title>Enojado</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
+        </ion-card-content>
+    </ion-card>
+    </ion-slide>
+
+    <ion-slide class="deprimido">
+      <ion-card class="depressed-card" button="true" color="light">
+        <img src="/assets/depressed.png" alt="" />
+        <ion-card-header>
+          <ion-card-subtitle>Get Started</ion-card-subtitle>
+          <ion-card-title>Deprimido</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
+        </ion-card-content>
+    </ion-card>
+    </ion-slide>
+
+    <ion-slide class="neutral">
+      <ion-card class="neutral-card" button="true" color="light">
+        <img src="/assets/neutral.png" alt="" />
+        <ion-card-header>
+          <ion-card-subtitle>Get Started</ion-card-subtitle>
+          <ion-card-title>Indiferente</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
+        </ion-card-content>
+    </ion-card>
+    </ion-slide>
+
+  </ion-slides>
+
+
+  
 </ion-content>
