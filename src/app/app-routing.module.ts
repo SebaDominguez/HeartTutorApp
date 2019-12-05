@@ -14,7 +14,29 @@ const routes: Routes = [
   {
     path: 'list',
     loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
+  },
+  {
+    path: 'happy',
+    loadChildren: () => import('./pages/happy/happy.module').then(m => m.HappyPageModule)
+  },   {
+    path: 'sad',
+    loadChildren: () => import('./pages/sad/sad.module').then( m => m.SadPageModule)
+  },
+  {
+    path: 'angry',
+    loadChildren: () => import('./pages/angry/angry.module').then( m => m.AngryPageModule)
+  },
+  {
+    path: 'depressed',
+    loadChildren: () => import('./pages/depressed/depressed.module').then( m => m.DepressedPageModule)
+  },
+  {
+    path: 'indifferent',
+    loadChildren: () => import('./pages/indifferent/indifferent.module').then( m => m.IndifferentPageModule)
   }
+
+
+
 ];
 
 @NgModule({

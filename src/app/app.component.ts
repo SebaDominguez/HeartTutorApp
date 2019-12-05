@@ -20,7 +20,9 @@ export class AppComponent {
       title: 'Emociones',
       url: '/list',
       icon: 'md-happy'
-    }
+    },
+        
+ 
   ];
 
   constructor(
