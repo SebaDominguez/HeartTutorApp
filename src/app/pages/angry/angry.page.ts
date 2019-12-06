@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Storage } from '@ionic/storage';
+
 
 @Component({
   selector: 'app-angry',
@@ -7,7 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AngryPage implements OnInit {
 
-  constructor() { }
+  inputText:string;
+  key:string = 'Enojado'
+
+  constructor(private storage: Storage) { }
+
+  postData(){
+    this.storage.set(this.key, this.inputText);
+    console.log (this.key, this.inputText)
+  }
+
+  getData(){
+    this.storage.get(this.key).then((val) => {
+      console.log('Estas ', this.key, 'y el motivo es:', val);
+    });
+  }
+
 
   ngOnInit() {
   }

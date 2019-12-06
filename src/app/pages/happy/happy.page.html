@@ -13,12 +13,12 @@
       <h1>Ingrese brevemente el motivo por el cual se sintió feliz </h1>
     </ion-text >
   </ion-item>
-<ion-item>
+
+  <ion-item>
     <ion-textarea [(ngModel)]="inputText" rows="10" autocapitalize="true" clearOnEdit="true" placeholder="Ingrese descripción aquí: "></ion-textarea>
   </ion-item>
   <div class="ion-padding">  
-    <ion-button (click)="postData()"expand="block" class="ion-no-margin">Enviar</ion-button>
-    <ion-button (click)="getData()"expand="block" class="ion-no-margin">Mostrar</ion-button>
+     <ion-button (click)="insertRow()"expand="block" class="ion-no-margin">Enviar</ion-button>
   </div>
 
 </ion-content>

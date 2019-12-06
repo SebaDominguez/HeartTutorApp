@@ -1,35 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import { Storage } from '@ionic/storage';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
+import { Platform } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-happy',
   templateUrl: './happy.page.html',
   styleUrls: ['./happy.page.scss'],
 })
-export class HappyPage implements OnInit {
+export class HappyPage{
 
+  databaseObj: SQLiteObject;
+  name_model: string = "";
+  readonly table_name: string = "Persona";
 
-  inputText:string;
-  key:string = 'Feliz'
-
-  constructor(private storage: Storage) { }
-
-  postData(){
-    this.storage.set(this.key, this.inputText);
-    console.log (this.key, this.inputText)
+  constructor(
+    private platform: Platform,
+    private sqlite: SQLite){}
+ 
+  insertRow() {
+    if (!this.name_model.length) {
+      alert("Enter Name");
+      return;
+    }
+    this.databaseObj.executeSql('INSERT INTO ' + this.table_name + ' (Name) VALUES ("' + this.name_model + '")', [])
+      .then(() => {
+        alert('Row Inserted!');
+      })
+      .catch(e => {
+        alert("error " + JSON.stringify(e))
+      });
   }
 
-  getData(){
-    this.storage.get(this.key).then((val) => {
-      console.log('Tu descripción es: ', val);
-    });
-  }
-
-  
-
-  ngOnInit() {
-
-  }
-  
-
+ 
+ 
 }

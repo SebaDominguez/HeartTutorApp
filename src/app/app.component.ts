@@ -21,6 +21,12 @@ export class AppComponent {
       url: '/list',
       icon: 'md-happy'
     },
+    {
+      title: 'db',
+      url: '/pages/db',
+      icon: 'md-happy'
+    }
+    
         
  
   ];

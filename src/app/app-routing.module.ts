@@ -33,9 +33,19 @@ const routes: Routes = [
   {
     path: 'indifferent',
     loadChildren: () => import('./pages/indifferent/indifferent.module').then( m => m.IndifferentPageModule)
+  },
+  {
+    path: 'data-base',
+    loadChildren: () => import('./pages/data-base/data-base.module').then( m => m.DataBasePageModule)
+  },
+  {
+    path: 'db',
+    loadChildren: () => import('./pages/db/db.module').then( m => m.DbPageModule)
+  },
+  {
+    path: 'database',
+    loadChildren: () => import('./pages/database/database.module').then( m => m.DatabasePageModule)
   }
-
-
 
 ];
 

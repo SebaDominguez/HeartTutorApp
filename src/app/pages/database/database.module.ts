@@ -4,21 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { HappyPageRoutingModule } from './happy-routing.module';
+import { DatabasePageRoutingModule } from './database-routing.module';
 
-import { HappyPage } from './happy.page';
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
+import { DatabasePage } from './database.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-
-    
-    HappyPageRoutingModule,
-
+    DatabasePageRoutingModule
   ],
-  declarations: [HappyPage]
+  declarations: [DatabasePage]
 })
-export class HappyPageModule {}
+export class DatabasePageModule {}
