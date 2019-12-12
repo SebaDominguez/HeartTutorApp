@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Lista, ServicioService } from '../../services/servicio.service';
 
 @Component({
   selector: 'app-database',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DatabasePage implements OnInit {
 
-  constructor() { }
+  listas: Lista [];
+
+  constructor(private servicioService: ServicioService) { }
 
   ngOnInit() {
+
+    this.servicioService.getLista().subscribe(res => {
+      this.listas = res;
+    });
+
+  }
+
+  remove(item) {
+    this.servicioService.removeLista(item.id);
   }
 
 }

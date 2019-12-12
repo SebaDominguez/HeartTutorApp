@@ -8,9 +8,15 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { IonicStorageModule } from '@ionic/storage';
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
-import { DataBasePage } from './pages/data-base/data-base.page';
+
+
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+
+import { HttpClientModule } from '@angular/common/http';
+
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,14 +25,14 @@ import { DataBasePage } from './pages/data-base/data-base.page';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    IonicStorageModule.forRoot(),
-    ],
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule],
+    
   providers: [
-    DataBasePage,
-    SQLite,
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent]
 })

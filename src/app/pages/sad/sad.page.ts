@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Storage } from '@ionic/storage';
+import { ActivatedRoute } from '@angular/router';
+import { NavController, LoadingController } from '@ionic/angular';
+import { Lista, ServicioService } from '../../services/servicio.service';
 
 @Component({
   selector: 'app-sad',
@@ -8,24 +10,56 @@ import { Storage } from '@ionic/storage';
 })
 export class SadPage implements OnInit {
 
-  inputText:string;
-  key:string = 'Triste'
+  listas: Lista = {
 
-  constructor(private storage: Storage) { }
+    emocion: 'Triste',
+    descripcion:'',
+    createdAt: new Date().getTime()
+  };
 
-  postData(){
-    this.storage.set(this.key, this.inputText);
-    console.log (this.key, this.inputText)
+  listasId = null;
+  
+  constructor(private route: ActivatedRoute, private nav: NavController, private todoService: ServicioService,
+    private loadingController: LoadingController) { }
+ 
+  ngOnInit() {
+    this.listasId = this.route.snapshot.params['id'];
+    if (this.listasId)  {
+      this.loadTodo();
+    }
   }
-
-  getData(){
-    this.storage.get(this.key).then((val) => {
-      console.log('Estas ', this.key, 'y el motivo es:', val);
+ 
+  
+  async loadTodo() {
+    const loading = await this.loadingController.create({
+      message: 'Loading Todo..'
+    });
+    await loading.present();
+ 
+    this.todoService.getListaId(this.listasId).subscribe(res => {
+      loading.dismiss();
+      this.listas = res;
     });
   }
-  
-
-  ngOnInit() {
+ 
+  async saveTodo() {
+ 
+    const loading = await this.loadingController.create({
+      message: 'Saving Todo..'
+    });
+    await loading.present();
+ 
+    if (this.listasId) {
+      this.todoService.updateLista(this.listas, this.listasId).then(() => {
+        loading.dismiss();
+        this.nav.navigateBack('home');
+      });
+    } else {
+      this.todoService.addToLista(this.listas).then(() => {
+        loading.dismiss();
+        this.nav.navigateBack('home');
+      });
+    }
   }
-
+ 
 }

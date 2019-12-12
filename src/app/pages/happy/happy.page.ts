@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
-import { Platform } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
+import { NavController, LoadingController } from '@ionic/angular';
+import { Lista, ServicioService } from '../../services/servicio.service';
+
 
 
 @Component({
@@ -8,30 +10,58 @@ import { Platform } from '@ionic/angular';
   templateUrl: './happy.page.html',
   styleUrls: ['./happy.page.scss'],
 })
-export class HappyPage{
+export class HappyPage implements OnInit {
 
-  databaseObj: SQLiteObject;
-  name_model: string = "";
-  readonly table_name: string = "Persona";
+  listas: Lista = {
 
-  constructor(
-    private platform: Platform,
-    private sqlite: SQLite){}
+    emocion: 'Feliz',
+    descripcion:'',
+    createdAt: new Date().getTime()
+  };
+
+  listasId = null;
+  
+  constructor(private route: ActivatedRoute, private nav: NavController, private todoService: ServicioService,
+    private loadingController: LoadingController) { }
  
-  insertRow() {
-    if (!this.name_model.length) {
-      alert("Enter Name");
-      return;
+  ngOnInit() {
+    this.listasId = this.route.snapshot.params['id'];
+    if (this.listasId)  {
+      this.loadTodo();
     }
-    this.databaseObj.executeSql('INSERT INTO ' + this.table_name + ' (Name) VALUES ("' + this.name_model + '")', [])
-      .then(() => {
-        alert('Row Inserted!');
-      })
-      .catch(e => {
-        alert("error " + JSON.stringify(e))
-      });
   }
-
  
+  
+  async loadTodo() {
+    const loading = await this.loadingController.create({
+      message: 'Loading Todo..'
+    });
+    await loading.present();
+ 
+    this.todoService.getListaId(this.listasId).subscribe(res => {
+      loading.dismiss();
+      this.listas = res;
+    });
+  }
+ 
+  async saveTodo() {
+ 
+    const loading = await this.loadingController.create({
+      message: 'Saving Todo..'
+    });
+    await loading.present();
+ 
+    if (this.listasId) {
+      this.todoService.updateLista(this.listas, this.listasId).then(() => {
+        loading.dismiss();
+        this.nav.navigateBack('home');
+      });
+    } else {
+      this.todoService.addToLista(this.listas).then(() => {
+        loading.dismiss();
+        this.nav.navigateBack('home');
+      });
+    }
+  }
  
 }

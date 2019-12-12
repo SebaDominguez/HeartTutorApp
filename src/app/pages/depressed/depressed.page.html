@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color ="light">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -14,11 +14,16 @@
     </ion-text >
   </ion-item>
 
-  <ion-item>
-    <ion-textarea [(ngModel)]="inputText" rows="10" autocapitalize="true" clearOnEdit="true" placeholder="Ingrese descripción aquí: "></ion-textarea>
-  </ion-item>
-  <div class="ion-padding">  
-     <ion-button (click)="postData()"expand="block" class="ion-no-margin">Enviar</ion-button>
-  </div>
+  <ion-list lines="full">
+    <ion-item>
+      <ion-input value= "Deprimido" readonly [(ngModel)]="listas.emocion"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-textarea required="true" type="text" rows="10" autocapitalize="true" placeholder="Ingrese descripción aquí" [(ngModel)]="listas.descripcion"></ion-textarea>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="full" (click)="saveTodo()">Save</ion-button>
+ 
 
 </ion-content>
+

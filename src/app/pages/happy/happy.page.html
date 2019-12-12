@@ -1,9 +1,9 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header >
+  <ion-toolbar color ="light">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Feliz</ion-title>
+    <ion-title >Feliz</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,11 +14,16 @@
     </ion-text >
   </ion-item>
 
-  <ion-item>
-    <ion-textarea [(ngModel)]="inputText" rows="10" autocapitalize="true" clearOnEdit="true" placeholder="Ingrese descripción aquí: "></ion-textarea>
-  </ion-item>
-  <div class="ion-padding">  
-     <ion-button (click)="insertRow()"expand="block" class="ion-no-margin">Enviar</ion-button>
-  </div>
+  <ion-list lines="full">
+    <ion-item>
+      <ion-input value= "Feliz" readonly [(ngModel)]="listas.emocion"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-textarea required="true" type="text" rows="10" autocapitalize="true" placeholder="Ingrese descripción aquí" [(ngModel)]="listas.descripcion"></ion-textarea>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="full" (click)="saveTodo()">Guardar</ion-button>
+ 
 
 </ion-content>
+
