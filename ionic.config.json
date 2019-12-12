@@ -1,5 +1,7 @@
 {
   "name": "HeartTutor",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

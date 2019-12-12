@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color ="light">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Triste</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-text color="dark" class="texto">
+      <h1>Ingrese brevemente el motivo por el cual se sintió triste </h1>
+    </ion-text >
+  </ion-item>
+
+  <ion-list lines="full">
+    <ion-item>
+      <ion-input value= "Triste" readonly [(ngModel)]="listas.emocion"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-textarea required="true" type="text" rows="10" autocapitalize="true" placeholder="Ingrese descripción aquí" [(ngModel)]="listas.descripcion"></ion-textarea>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="full" (click)="saveTodo()">Guardar</ion-button>
+ 
+
+</ion-content>
+

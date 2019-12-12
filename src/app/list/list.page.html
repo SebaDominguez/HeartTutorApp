@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color ="light">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -10,22 +10,23 @@
  
 </ion-header>
 
-<ion-text color="dark" class="texto">
-  <h1>Ingrese a continuación cómo se sintió el día de hoy: </h1>
-</ion-text>
 
 
 
 <ion-content>
+    <ion-text color="dark" class="texto">
+      <h1>Ingrese a continuación cómo se sintió el día de hoy: </h1>
+    </ion-text >
 
   <ion-slides pager="true">
 
     <ion-slide class="feliz">
 
-      <ion-card class="happy-card" button="true" color ="light">
+      <ion-card class="happy-card" button="true" mode="md" routerLink="/happy">
+        <ion-item color="success"></ion-item>
         <img src="/assets/smiley.png"  alt="" />
         <ion-card-header>
-          <ion-card-subtitle>Get Started</ion-card-subtitle>
+          <ion-card-subtitle>Me sentí</ion-card-subtitle>
           <ion-card-title>Feliz</ion-card-title>
         </ion-card-header>
         <ion-card-content>
@@ -35,10 +36,11 @@
     </ion-slide>
 
     <ion-slide class="triste">
-      <ion-card class="sad-card" button="true" color="light">
+      <ion-card class="sad-card" button="true" mode="md" routerLink="/sad">
+        <ion-item color="medium"></ion-item>
         <img src="/assets/sad.png" alt="" />
         <ion-card-header>
-          <ion-card-subtitle>Get Started</ion-card-subtitle>
+          <ion-card-subtitle>Me sentí</ion-card-subtitle>
           <ion-card-title>Triste</ion-card-title>
         </ion-card-header>
         <ion-card-content>
@@ -48,10 +50,11 @@
     </ion-slide>
 
     <ion-slide class="enojado">
-      <ion-card class="angry-card" button="true" color="light">
+      <ion-card class="angry-card" button="true" routerLink="/angry">
+        <ion-item color="danger"></ion-item>
         <img src="/assets/angry.png" alt="" />
         <ion-card-header>
-          <ion-card-subtitle>Get Started</ion-card-subtitle>
+          <ion-card-subtitle>Me sentí</ion-card-subtitle>
           <ion-card-title>Enojado</ion-card-title>
         </ion-card-header>
         <ion-card-content>
@@ -61,10 +64,11 @@
     </ion-slide>
 
     <ion-slide class="deprimido">
-      <ion-card class="depressed-card" button="true" color="light">
+      <ion-card class="depressed-card" button="true"routerLink="/depressed">
+        <ion-item color="primary"></ion-item>
         <img src="/assets/depressed.png" alt="" />
         <ion-card-header>
-          <ion-card-subtitle>Get Started</ion-card-subtitle>
+          <ion-card-subtitle>Me sentí</ion-card-subtitle>
           <ion-card-title>Deprimido</ion-card-title>
         </ion-card-header>
         <ion-card-content>
@@ -74,10 +78,11 @@
     </ion-slide>
 
     <ion-slide class="neutral">
-      <ion-card class="neutral-card" button="true" color="light">
+      <ion-card class="neutral-card" button="true" routerLink="/indifferent">
+        <ion-item color="light"></ion-item>
         <img src="/assets/neutral.png" alt="" />
         <ion-card-header>
-          <ion-card-subtitle>Get Started</ion-card-subtitle>
+          <ion-card-subtitle>Me sentí</ion-card-subtitle>
           <ion-card-title>Indiferente</ion-card-title>
         </ion-card-header>
         <ion-card-content>
@@ -91,3 +96,5 @@
 
   
 </ion-content>
+
+
