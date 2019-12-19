@@ -20,7 +20,7 @@ export class RegisterPage implements OnInit {
   
   async onRegister(){
 
-    const user = await this.authSvc.onRegister(this.user);
+    const user = await this.authSvc.registerUser(this.user);
     if (this.user.password!==this.cpassword){
       return console.error("Passwords don't match")
     }

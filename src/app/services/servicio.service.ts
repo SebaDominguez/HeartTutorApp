@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore'
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AuthService } from '../services/auth.service';
 
 export interface Lista {
-
+  id?: string,
   emocion: string,
   descripcion: string,
   createdAt: number;
@@ -20,44 +22,46 @@ export class ServicioService {
 
   private listaCollection: AngularFirestoreCollection<Lista>; 
   private listas: Observable<Lista[]>;
-
-  constructor (db: AngularFirestore) {
-
-    this.listaCollection = db.collection<Lista>('Emociones')
-
-    this.listas = this.listaCollection.snapshotChanges().pipe(
-      map(actions => {
-        return actions.map(a => {
+  constructor(private db: AngularFirestore,
+              private afAuth: AngularFireAuth,
+              private authService: AuthService) {
+    let currentUser = this.authService.getCurrentUser();
+    if(this.afAuth.auth.currentUser) {
+      let user = this.afAuth.auth.currentUser.uid;
+    }
+    
+    if (currentUser) {
+      this.refreshNotesCollection(currentUser.uid)
+    }
+  }
+  refreshNotesCollection(userId) {
+    this.listaCollection = this.db.collection('Usuarios').doc(userId).collection<Lista>('Sentimientos');
+      this.listas = this.listaCollection.snapshotChanges().pipe(
+        map(actions => actions.map(a => {
           const data = a.payload.doc.data();
           const id = a.payload.doc.id;
-          return { id, ...data };
-        });
-      })
-    );
-
+          return {id, ... data};
+        }))
+      )
   }
   
-  getLista() {
+  getListas() {
     return this.listas;
   }
- 
   getListaId(id) {
     return this.listaCollection.doc<Lista>(id).valueChanges();
   }
- 
-  updateLista(todo: Lista, id: string) {
-    return this.listaCollection.doc(id).update(todo);
+  updateLista(lista) {
+    return this.listaCollection.doc(lista.id).update(lista);
   }
- 
-  addToLista(todo: Lista) {
-    return this.listaCollection.add(todo);
+  deleteLista(lista) {
+    this.listaCollection.doc(lista.id).delete();
   }
- 
-  removeLista(id) {
-    return this.listaCollection.doc(id).delete();
+  addToLista(lista) {
+    return this.listaCollection.add(lista);
   }
-
-
-
+  
+  
+  
 
 }

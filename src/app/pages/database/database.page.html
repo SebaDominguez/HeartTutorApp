@@ -9,7 +9,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
 
   
   <ion-list>
@@ -23,15 +23,12 @@
       </div>
     </ng-container>
 
-    <ion-item-sliding *ngFor="let item of listas">
-      <ion-item lines="inset" button [routerLink]="['/details', item.id]">
-        <ion-label>
-          {{ item.task }}
-          <p>{{ item.createdAt | date:'short' }}</p>
-        </ion-label>
-        <ion-note slot="end" color="primary">{{ item.priority }}</ion-note>
-      </ion-item>
-      
+    <ion-item-sliding >
+      <div *ngFor="let res of listas">
+        <h1>{{res.emocion}}</h1>
+        <h2>{{res.descripcion}}</h2>
+      </div>
+
         <ion-item-options side="end">
         <ion-item-option (click)="remove(item)" color="secondary">
           Check
