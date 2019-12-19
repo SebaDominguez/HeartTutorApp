@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
 
@@ -16,7 +16,16 @@ const routes: Routes = [
   {    path: 'depressed',  loadChildren: () => import('./pages/depressed/depressed.module').then( m => m.DepressedPageModule)},
   {    path: 'indifferent',  loadChildren: () => import('./pages/indifferent/indifferent.module').then( m => m.IndifferentPageModule)},
   {    path: 'database', loadChildren: () => import('./pages/database/database.module').then( m => m.DatabasePageModule) },
-  {    path: 'database/:id', loadChildren: () => import('./pages/database/database.module').then( m => m.DatabasePageModule) }
+  {    path: 'database/:id', loadChildren: () => import('./pages/database/database.module').then( m => m.DatabasePageModule) },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+  }
+
 
 ];
 

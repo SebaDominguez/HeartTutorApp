@@ -13,9 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-
-import { HttpClientModule } from '@angular/common/http';
-
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 
 @NgModule({
@@ -25,9 +23,9 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule],
+    AngularFirestoreModule,
+    AngularFireAuthModule],
     
   providers: [
     StatusBar,
