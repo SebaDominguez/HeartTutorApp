@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1057684742120",
+    "firebase_url": "https://heart-tutor-74bed.firebaseio.com",
+    "project_id": "heart-tutor-74bed",
+    "storage_bucket": "heart-tutor-74bed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1057684742120:android:13b9f34b4fc2ee8c01ce5d",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1057684742120-rt1efp5vpdhbttv3kos05evbbvdt0p4e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzE3esbLSgg9B8XQjgzeJXgeP4LBFdhfw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1057684742120-rt1efp5vpdhbttv3kos05evbbvdt0p4e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
