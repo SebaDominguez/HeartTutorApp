@@ -1,11 +1,11 @@
 <ion-header>
   <ion-toolbar>   
-    <ion-title color='primary'>Bienvenido a la app</ion-title>
+    <ion-title color='primary'>Login HeartTutor</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  Debes iniciar sesión para continuar
+  Bienvenido, debes iniciar sesión para poder continuar
   <ion-list>
     <ion-item>
       <ion-label position ="floating">Correo</ion-label>
@@ -19,11 +19,12 @@
     <ion-button  (click)="onLogin()">Iniciar sesión</ion-button>
   </ion-list>
   <ion-text color="dark" class="texto">
-    Si no tienes una cuenta creada presiona el siguiente boton:
-  </ion-text >
-
-    <ion-button [routerLink]="['/register']">Registrar</ion-button>
-
+    Si no tienes una cuenta creada puedes registrarte a continuación:
+  </ion-text>
+  
+<div>
+  <ion-button [routerLink]="['/register']">Registrar</ion-button>
+</div>
   
 
 </ion-content>

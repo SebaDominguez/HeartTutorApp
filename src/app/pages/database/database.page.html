@@ -24,13 +24,17 @@
     </ng-container>
 
     <ion-item-sliding >
-      <div *ngFor="let res of listas">
-        <h1>{{res.emocion}}</h1>
-        <h2>{{res.descripcion}}</h2>
+
+      <ion-list>
+      <div *ngFor="let res of listas">        
+        <h1>{{res.createdAt | date: 'dd/MM/yyyy HH:mm'}}</h1>
+        <h2>{{res.emocion}}</h2>     
+        <h3>{{res.descripcion}}</h3>
       </div>
+    </ion-list>
 
         <ion-item-options side="end">
-        <ion-item-option (click)="remove(item)" color="secondary">
+        <ion-item-option color="secondary">
           Check
           <ion-icon name="checkmark" slot="end"></ion-icon>
         </ion-item-option>

@@ -4,6 +4,7 @@ import { NavController,AlertController, LoadingController } from '@ionic/angular
 import { Lista, ServicioService } from '../../services/servicio.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-angry',
   templateUrl: './angry.page.html',

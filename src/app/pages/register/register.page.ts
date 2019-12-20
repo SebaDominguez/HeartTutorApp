@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService} from '../../services/auth.service';
 import { User } from '../../services/auth.service';
 import { NavController, LoadingController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -11,10 +12,15 @@ import { NavController, LoadingController } from '@ionic/angular';
 })
 export class RegisterPage implements OnInit {
 
+
+
   user: User = new User();
   cpassword: string ="";
 
   constructor(private authSvc: AuthService, private router: Router, private nav: NavController) { }
+
+  
+  
 
   ngOnInit() {}
   
@@ -24,6 +30,7 @@ export class RegisterPage implements OnInit {
     if (this.user.password!==this.cpassword){
       return console.error("Passwords don't match")
     }
+    
     console.log('Succesfully created user')
     this.nav.navigateBack('login');
     }
