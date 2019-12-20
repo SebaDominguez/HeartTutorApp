@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>   
+    <ion-title color='primary'>Bienvenido a la app</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  Debes iniciar sesión para continuar
+  <ion-list>
+    <ion-item>
+      <ion-label position ="floating">Correo</ion-label>
+      <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position ="floating">Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+    </ion-item>
+    <ion-button  (click)="onLogin()">Iniciar sesión</ion-button>
+  </ion-list>
+  <ion-text color="dark" class="texto">
+    Si no tienes una cuenta creada presiona el siguiente boton:
+  </ion-text >
+
+    <ion-button [routerLink]="['/register']">Registrar</ion-button>
+
+  
+
+</ion-content>

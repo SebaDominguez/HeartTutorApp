@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NavController, LoadingController } from '@ionic/angular';
+import { NavController,AlertController, LoadingController } from '@ionic/angular';
 import { Lista, ServicioService } from '../../services/servicio.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 
 
@@ -19,49 +21,39 @@ export class HappyPage implements OnInit {
     createdAt: new Date().getTime()
   };
 
-  listasId = null;
-  
-  constructor(private route: ActivatedRoute, private nav: NavController, private todoService: ServicioService,
-    private loadingController: LoadingController) { }
- 
-  ngOnInit() {
-    this.listasId = this.route.snapshot.params['id'];
-    if (this.listasId)  {
-      this.loadTodo();
+  constructor(private notesService: ServicioService,
+    private loadingCtrl: LoadingController,
+    private alertCtrl: AlertController,
+    private authService: AuthService,
+    private router: Router,
+    private nav: NavController) {
+
+    if(this.authService.getCurrentUser() == null) {
+      this.router.navigate(['/home']);
     }
-  }
- 
-  
-  async loadTodo() {
-    const loading = await this.loadingController.create({
-      message: 'Loading Todo..'
-    });
-    await loading.present();
- 
-    this.todoService.getListaId(this.listasId).subscribe(res => {
-      loading.dismiss();
-      this.listas = res;
-    });
-  }
- 
-  async saveTodo() {
- 
-    const loading = await this.loadingController.create({
-      message: 'Saving Todo..'
-    });
-    await loading.present();
- 
-    if (this.listasId) {
-      this.todoService.updateLista(this.listas, this.listasId).then(() => {
-        loading.dismiss();
-        this.nav.navigateBack('home');
-      });
-    } else {
-      this.todoService.addToLista(this.listas).then(() => {
-        loading.dismiss();
-        this.nav.navigateBack('home');
-      });
     }
-  }
- 
+
+    ngOnInit() {
+    }
+    async saveTodo() {
+      const loading = await this.loadingCtrl.create({
+        message: "Se está registrando tu emoción",
+        spinner: 'crescent',
+        });
+        loading.present();
+        if(this.listas.id == null) {
+          //save the new note
+          this.listas.createdAt = new Date().getTime();
+          this.notesService.addToLista(this.listas).then((noteDoc) => {
+            // this returns the new note document created in the FirebaseDB
+            this.listas.id = noteDoc.id;
+            loading.dismiss();
+            this.nav.navigateBack('home');
+          });
+        } else {
+          this.notesService.updateLista(this.listas);
+          loading.dismiss();
+          this.nav.navigateBack('home');
+        }
+      }
 }

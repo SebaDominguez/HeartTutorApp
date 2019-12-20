@@ -6,22 +6,22 @@ import { Lista, ServicioService } from '../../services/servicio.service';
   templateUrl: './database.page.html',
   styleUrls: ['./database.page.scss'],
 })
-export class DatabasePage implements OnInit {
+export class DatabasePage {
 
   listas: Lista [];
 
+
   constructor(private servicioService: ServicioService) { }
 
-  ngOnInit() {
-
-    this.servicioService.getLista().subscribe(res => {
-      this.listas = res;
-    });
-
-  }
 
   remove(item) {
-    this.servicioService.removeLista(item.id);
+    this.servicioService.deleteLista(item.id);
   }
 
+  ionViewWillEnter(){
+    this.servicioService.getListas().subscribe(res => {
+      this.listas = res;
+    });
+  }
+  
 }

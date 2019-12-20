@@ -27,7 +27,7 @@ export class AppComponent {
     {
       title: 'Database',
       url: '/database',
-      icon: 'md-happy'
+      icon: 'md-cloud'
     }       
  
   ];
