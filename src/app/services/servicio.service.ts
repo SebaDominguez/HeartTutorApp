@@ -60,8 +60,5 @@ export class ServicioService {
   addToLista(lista) {
     return this.listaCollection.add(lista);
   }
-  
-  
-  
 
 }

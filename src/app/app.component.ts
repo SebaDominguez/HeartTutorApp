@@ -15,7 +15,7 @@ export class AppComponent {
 
   public appPages = [
     {
-      title: 'Home',
+      title: 'Inicio',
       url: '/home',
       icon: 'home'
     },
@@ -25,7 +25,7 @@ export class AppComponent {
       icon: 'md-happy'
     },
     {
-      title: 'Database',
+      title: 'Historial',
       url: '/database',
       icon: 'md-cloud'
     }       
