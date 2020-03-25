@@ -7,10 +7,19 @@ ion-slides {
 }
 
 .triste {
+    color: salmon;
+    height: 90%;
+}
+
+.angustiado {
     height: 90%;
 }
 
 .enojado {
+    height: 90%;
+}
+
+.ansioso {
     height: 90%;
 }
 
@@ -37,6 +46,7 @@ ion-slides {
     overflow: hidden;
     
   }
+
 .sad-card img {
     margin: auto;
     margin-top: 10px;
@@ -45,6 +55,16 @@ ion-slides {
     overflow: hidden;
     
   }
+
+.distressed-card img {
+    margin: auto;
+    margin-top: 10px;
+    max-height: 175px;
+    max-width: 175px;
+    overflow: hidden;
+    
+  }
+
 .angry-card img {
     margin: auto;
     margin-top: 10px;
@@ -53,6 +73,16 @@ ion-slides {
     overflow: hidden;
     
   }
+
+.anxious-card img {
+    margin: auto;
+    margin-top: 10px;
+    max-height: 175px;
+    max-width: 175px;
+    overflow: hidden;
+    
+  }
+
 .depressed-card img {
     margin: auto;
     margin-top: 10px;
@@ -61,6 +91,7 @@ ion-slides {
     overflow: hidden;
     
   }
+
 .neutral-card img {
     margin: auto;
     margin-top: 10px;

@@ -20,7 +20,15 @@ const routes: Routes = [
   {    path: 'database', loadChildren: () => import('./pages/database/database.module').then( m => m.DatabasePageModule), canActivate: [AuthGuard] },
   {    path: 'database/:id', loadChildren: () => import('./pages/database/database.module').then( m => m.DatabasePageModule) , canActivate: [AuthGuard]},
   {    path: 'login', loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)},
-  {    path: 'register', loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)},
+  {    path: 'register', loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)},  {
+    path: 'anxious',
+    loadChildren: () => import('./pages/anxious/anxious.module').then( m => m.AnxiousPageModule)
+  },
+  {
+    path: 'distressed',
+    loadChildren: () => import('./pages/distressed/distressed.module').then( m => m.DistressedPageModule)
+  },
+
 
 
 
